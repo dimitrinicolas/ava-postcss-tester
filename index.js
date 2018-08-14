@@ -85,14 +85,14 @@ class PostcssTester {
       }
 
       if (typeof output === 'function') {
-        output(null, result.css, t);
+        output(null, warnings, result.css);
         return;
       }
 
       t.fail(`${PREFIX} Invalid output type`);
     }).catch(err => {
       if (typeof output === 'function') {
-        output(err, null, t);
+        output(err, null, null);
         return;
       }
 

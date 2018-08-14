@@ -156,7 +156,7 @@ test('Function output', async t => {
     tolerateWarnings: true
   });
   t.plan(1);
-  await tester.test('@import a.css', (err, result) => {
+  await tester.test('@import a.css', (err, warnings, result) => {
     t.is(result, '');
   });
 });
@@ -188,6 +188,9 @@ test('Error output', async t => {
     plugin: [postcssImportExtGlob]
   });
   const input = '@import-glob';
-  const output = new Error('No string found with rule @import-glob ');
+  const output = new Error(
+    'postcss-import-ext-glob: <css input>:1:1: No string found with rule'
+    + ' @import-glob '
+  );
   await tester.test(input, output, t);
 });

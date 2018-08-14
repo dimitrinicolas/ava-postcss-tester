@@ -41,10 +41,10 @@ Create a new tester by calling `new PostcssTester` with an options object:
 - `postcss`: The postcss module to use for process
 - `plugin`: You PostCSS plugin to test (can be an array of plugins) 
 tolerateWarnings;
-- `from`: __Optional__, default: `''`, The `from` parameter passed to 
+- `from`: *Optional*, default: `''`, The `from` parameter passed to 
 `postcss.process`, must be a file path
-- `tolerateWarnings`: __Optional__, default: `false`, Ignore PostCSS warnings
-- `exactComparaison`: __Optional__, default: `false`, Compare the `input` and 
+- `tolerateWarnings`: Optional, default: `false`, Ignore PostCSS warnings
+- `exactComparaison`: Optional, default: `false`, Compare the `input` and 
 `output` without any trimming or line breaks cleaning
 
 ```js
@@ -61,10 +61,14 @@ const tester = new PostcssTester({
 Then you can run the async function `tester.test(input, output, t, options)``:
 
 - `input`: A string containing your css input
-- `output`: A string containing your excpected output, or a function receiving 
-(err, result, t) for finishing test as you would like it
+- `output`: A string containing your excpected output, it can be either a CSS 
+string, an `Error` or a function receiving (error, warnings, result) letting 
+you finish the test as you would like it
+  - `error`: A string containing the Error message
+  - `warnings`: An array of PostCSS warnings, is null if there an error occured
+  - `result`: A string containing the PostCSS process result
 - `t`: The AVA test `t` object
-- `options`: __Optional__, An object containing those additional parameters:
+- `options`: *Optional*, An object containing those additional parameters:
   - `pluginOptions`: Options passed to your plugin
   - `pluginsBefore`: An array of plugins to load before your plugin
   - `pluginsAfter`: An array of plugins to load after your plugin
