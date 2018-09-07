@@ -3,6 +3,10 @@
 This project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 1.1.1 - 2018-07-07
+### Added
+- License file.
+
 ## 1.1.0 - 2018-08-13
 ### Added
 - Warnings to custom result handling.
